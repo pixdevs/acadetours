@@ -1,0 +1,1 @@
+# Acadetours static page
