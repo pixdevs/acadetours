@@ -505,4 +505,9 @@ footer {
         grid-template-columns: 1fr;
         text-align: center;
     }
+
+    /* Center social icons in mobile view */
+    .social-icons {
+        justify-content: center;
+    }
 }
