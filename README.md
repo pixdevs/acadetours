@@ -1,4 +1,4 @@
 # Acadetours static page
-We are excited to introduce ourselves as specialists in organizing Industrial Visits for College Students and Educational Trips for School Students, providing unparalleled support for a seamless experience.  
-Our mission is to inspire and educate students by providing hands-on Industry Immersion Experiences that blend practical exposure with knowledge enhancement.  
-We’d love the opportunity to discuss how Acadetours can help you curate your next memorable experience.
+Acadetours Global creates transformative educational experiences by bridging the gap between academics and industry practices. With a focus on practical learning, we collaborate with leading industries and trusted vendors to deliver programs that prepare students for successful careers and global opportunities. We are committed to inspiring the next generation through innovative academic quests that combine practical exposure with knowledge enhancement.
+At Acadetours Global, we provide top-tier talent without any upfront cost. With our extensive database and strong connections to India’s leading colleges, we connect you with skilled professionals ready to make an impact. In return, we ask for priority access to your job openings, ensuring you get the best candidates faster.
+Let’s partner to build your dream team.
