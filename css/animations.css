@@ -1,0 +1,374 @@
+/* Animation classes */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 0.8s ease forwards;
+}
+
+.slide-left {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideLeft 0.8s ease forwards;
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideRight 0.8s ease forwards;
+}
+
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: zoomIn 0.8s ease forwards;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animations for interactive elements */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Nav link hover animation */
+.nav-links li a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a:hover::before {
+    visibility: visible;
+    width: 100%;
+}
+
+/* Image hover effect */
+.about-image img, 
+.name-image img,
+.program-image img,
+.service-card img {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.about-image:hover img, 
+.name-image:hover img,
+.program-image:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Card hover animations */
+.highlight-card,
+.service-card,
+.pillar-card,
+.mission-card,
+.vision-card,
+.location-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:hover,
+.service-card:hover,
+.pillar-card:hover,
+.mission-card:hover,
+.vision-card:hover,
+.location-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Form input focus animation */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    transform: translateY(-2px);
+}
+
+/* Header scroll animation */
+#header {
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* FAQ toggle animation */
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+/* Scroll-triggered animations */
+.scroll-fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.scroll-fade-in.visible {
+    opacity: 1;
+}
+
+.scroll-slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Social links hover animation */
+.social-links a {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) rotate(360deg);
+}
+
+.social-links2 a {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-links2 a:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer link animation */
+.link-group ul li a {
+    position: relative;
+    transition: padding-left 0.3s ease, color 0.3s ease;
+}
+
+.link-group ul li a::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid var(--primary-color);
+    transition: opacity 0.3s ease, left 0.3s ease;
+}
+
+.link-group ul li a:hover::before {
+    opacity: 1;
+    left: -15px;
+}
+
+/* Animation delays for staggered effects */
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+.delay-4 {
+    animation-delay: 0.8s;
+}
+
+/* Animations for specific elements */
+.hero-content h1 {
+    animation: slideUp 1s ease forwards;
+}
+
+.hero-content p {
+    animation: slideUp 1s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-content .cta-buttons {
+    animation: slideUp 1s ease 0.4s forwards;
+    opacity: 0;
+}
+
+/* Logo animation */
+.logo h1 {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.logo h1::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.logo:hover h1 {
+    transform: translateY(-3px);
+}
+
+.logo:hover h1::after {
+    width: 100%;
+}
+
+/* Mobile menu animation */
+@media screen and (max-width: 768px) {
+    .hamburger span {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .nav-links {
+        transition: left 0.3s ease;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    .nav-links.active li {
+        animation: navItemSlide 0.5s ease forwards;
+    }
+    
+    .nav-links.active li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    
+    .nav-links.active li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    
+    .nav-links.active li:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    
+    .nav-links.active li:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+    
+    .nav-links.active li:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+}
+
+@keyframes navItemSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
