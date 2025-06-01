@@ -1,4 +1,4 @@
-# Acadetours Global – Static Website
+# AcadetoursGlobal – Static Website
 
 🔗 **Live Site**: [acadetours.com](https://acadetours.com)  
 📂 **Repository**: [pixdevs/acadetours](https://github.com/pixdevs/acadetours)
@@ -13,7 +13,7 @@ This is the static website for **Acadetours Global**, a company focused on creat
 - **GitHub Pages** – For seamless hosting and deployment
 
 
-## 🚀 About Acadetours Global
+## 🚀 About AcadetoursGlobal
 
 **Acadetours Global** collaborates with leading industries and trusted vendors to deliver programs that combine practical exposure with academic knowledge. Their mission is to prepare students for successful careers and global opportunities by offering:
 
