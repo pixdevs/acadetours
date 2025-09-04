@@ -1325,3 +1325,88 @@ footer {
         gap: 10px;
     }
 }
+
+#company-timeline {
+        margin: 60px 0;
+    }
+    .timeline-horizontal {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        margin-top: 40px;
+        overflow-x: auto;
+        padding-bottom: 30px;
+    }
+    .timeline-horizontal::before {
+        content: '';
+        position: absolute;
+        top: 32px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #e0e0e0;
+        z-index: 0;
+    }
+    .timeline-item {
+        position: relative;
+        flex: 1 1 180px;
+        min-width: 180px;
+        max-width: 220px;
+        text-align: center;
+        z-index: 1;
+    }
+    .timeline-dot {
+        width: 24px;
+        height: 24px;
+        background: #2A3F65;
+        border-radius: 50%;
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
+        border: 4px solid #fff;
+        box-shadow: 0 0 0 4px #0077ff33;
+    }
+    .timeline-content {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        padding: 18px 12px 12px 12px;
+        margin-top: 36px;
+    }
+    .timeline-content h3 {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+        color: #5A7BBD;
+    }
+    .timeline-content p {
+        font-size: 0.97em;
+        color: #444;
+    }
+    @media (max-width: 900px) {
+        .timeline-horizontal {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .timeline-horizontal::before {
+            top: 32px;
+            left: 32px;
+            width: 4px;
+            height: calc(100% - 32px);
+            background: #e0e0e0;
+        }
+        .timeline-item {
+            max-width: none;
+            min-width: 0;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        .timeline-dot {
+            left: 0;
+            margin-left: 32px;
+        }
+        .timeline-content {
+            margin-left: 70px;
+            margin-top: 0;
+        }
+    }
