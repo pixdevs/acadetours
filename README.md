@@ -9,9 +9,10 @@ This is the static website for **Acadetours Global**, a company focused on creat
 ## 🛠️ Tech Stack
 
 - **HTML5 | CSS3 | Vanilla JavaScript (ES6)**
-- **Vite** – Lightning-fast modern front-end build tool
+- **Vite** (optional) – `npm run dev` serves the root HTML pages for local preview
 - **GitHub Pages** – For seamless hosting and deployment
 
+The site is **static HTML** at the repo root (`index.html`, `about.html`, etc.) with shared assets under `css/`, `js/`, and `images/`. Unused default Vite starter files were removed; there is no bundled SPA entry.
 
 ## 🚀 About AcadetoursGlobal
 

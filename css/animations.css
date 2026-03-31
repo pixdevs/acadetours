@@ -372,3 +372,88 @@
         transform: translateY(0);
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .slide-up,
+    .slide-left,
+    .slide-right,
+    .zoom-in {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .hero-content h1,
+    .hero-content p,
+    .hero-content .cta-buttons {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .btn:hover::after {
+        animation: none !important;
+    }
+
+    .scroll-fade-in,
+    .scroll-slide-up {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .scroll-fade-in.visible,
+    .scroll-slide-up.visible {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .highlight-card:hover,
+    .service-card:hover,
+    .pillar-card:hover,
+    .mission-card:hover,
+    .vision-card:hover,
+    .location-card:hover {
+        transform: none !important;
+    }
+
+    .about-image:hover img,
+    .name-image:hover img,
+    .program-image:hover img {
+        transform: none !important;
+    }
+
+    .social-links a:hover {
+        transform: none !important;
+    }
+
+    .social-links2 a:hover {
+        transform: none !important;
+    }
+
+    .logo:hover h1 {
+        transform: none !important;
+    }
+
+    .faq-answer {
+        transition: none !important;
+    }
+
+    .nav-links.active li {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .nav-links li {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        transform: none !important;
+    }
+}

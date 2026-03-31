@@ -61,8 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Parallax effect for hero section
     const hero = document.getElementById('hero');
-    
-    if (hero) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (hero && !reduceMotion) {
         window.addEventListener('scroll', function() {
             const scrollPosition = window.scrollY;
             hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;

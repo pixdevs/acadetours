@@ -1,59 +1,86 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Header scroll effect
     const header = document.getElementById('header');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-    
+
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
-    if (hamburger) {
+
+    function syncMenuAria() {
+        if (hamburger && navLinks) {
+            hamburger.setAttribute('aria-expanded', String(navLinks.classList.contains('active')));
+        }
+    }
+
+    if (hamburger && navLinks) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
             document.body.classList.toggle('menu-open');
+            syncMenuAria();
+        });
+
+        hamburger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hamburger.click();
+            }
         });
     }
-    
+
     // Close mobile menu when clicking a link
     const navItems = document.querySelectorAll('.nav-links li a');
-    
+
     navItems.forEach(item => {
         item.addEventListener('click', function() {
-            if (navLinks.classList.contains('active')) {
+            if (navLinks && hamburger && navLinks.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
                 document.body.classList.remove('menu-open');
+                syncMenuAria();
             }
         });
     });
-    
+
     // FAQ toggle
     const faqItems = document.querySelectorAll('.faq-item');
-    
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
         const icon = item.querySelector('.toggle-icon i');
-        
+
+        if (!question || !answer || !icon) {
+            return;
+        }
+
         question.addEventListener('click', function() {
             const isOpen = item.classList.contains('active');
-            
-            // Close all other FAQ items
+
             faqItems.forEach(faq => {
                 faq.classList.remove('active');
-                faq.querySelector('.faq-answer').style.display = 'none';
-                faq.querySelector('.toggle-icon i').className = 'fas fa-plus';
+                const faqAnswer = faq.querySelector('.faq-answer');
+                const faqIcon = faq.querySelector('.toggle-icon i');
+                if (faqAnswer) {
+                    faqAnswer.style.display = 'none';
+                }
+                if (faqIcon) {
+                    faqIcon.className = 'fas fa-plus';
+                }
             });
-            
-            // Open/close the clicked FAQ item
+
             if (!isOpen) {
                 item.classList.add('active');
                 answer.style.display = 'block';
@@ -96,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (targetElement) {
                 window.scrollTo({
                     top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
                 });
             }
         });

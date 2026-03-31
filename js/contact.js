@@ -71,29 +71,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// Add CSS styles for form validation
-document.head.insertAdjacentHTML('beforeend', `
-<style>
-.error {
-    border-color: #f44336 !important;
-    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2) !important;
-}
-
-.success-message {
-    background-color: #E8F5E9;
-    color: #2E7D32;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    transition: opacity 0.5s ease;
-}
-
-.success-message i {
-    font-size: 1.5rem;
-    margin-right: 10px;
-}
-</style>
-`);
