@@ -37,6 +37,14 @@
     --space-md: 1.5rem;
     --space-lg: 2.5rem;
     --space-xl: 4rem;
+    --glass-light: rgba(255, 255, 255, 0.68);
+    --glass-light-strong: rgba(255, 255, 255, 0.78);
+    --glass-dark: rgba(255, 255, 255, 0.14);
+    --glass-border-light: rgba(255, 255, 255, 0.48);
+    --glass-border-tint: rgba(113, 150, 221, 0.3);
+    --glass-shadow: 0 14px 38px rgba(15, 30, 62, 0.18);
+    --glass-blur: 16px;
+    --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * {
@@ -60,6 +68,10 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     background-color: var(--off-white);
+    background-image:
+        radial-gradient(circle at 10% 10%, rgba(113, 150, 221, 0.16), transparent 42%),
+        radial-gradient(circle at 90% 15%, rgba(42, 63, 101, 0.14), transparent 38%),
+        linear-gradient(180deg, #fbfcff 0%, #f5f7fb 50%, #f7f8fc 100%);
     overflow-x: hidden;
 }
 
@@ -234,8 +246,11 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: var(--shadow-soft);
+    background-color: var(--glass-light);
+    border-bottom: 1px solid var(--glass-border-light);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--glass-shadow);
     padding: 15px 0;
     z-index: 1000;
     transition: var(--transition-standard);
@@ -243,8 +258,9 @@ section {
 
 #header.scrolled {
     padding: 10px 0;
-    background-color: white;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--glass-light-strong);
+    border-bottom-color: var(--glass-border-tint);
+    box-shadow: 0 10px 30px rgba(15, 30, 62, 0.2);
 }
 
 #header .container {
@@ -340,6 +356,12 @@ nav {
     margin: 0 auto;
     padding: 2rem;
     color: white;
+    background: var(--glass-dark);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 14px 40px rgba(5, 22, 56, 0.25);
 }
 
 .hero-content h1,
@@ -400,7 +422,8 @@ nav {
 }
 
 .highlight-card {
-    background-color: white;
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -484,7 +507,8 @@ nav {
 }
 
 .service-card {
-    background-color: var(--light-gray);
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
@@ -573,7 +597,8 @@ nav {
 }
 
 .mission-card, .vision-card {
-    background-color: var(--light-gray);
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 3rem 2rem;
     border-radius: var(--border-radius);
     text-align: center;
@@ -607,7 +632,8 @@ nav {
 }
 
 .pillar-card {
-    background-color: var(--surface);
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -706,7 +732,8 @@ nav {
 }
 
 .story-slide {
-    background-color: var(--light-gray);
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 3rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -874,7 +901,8 @@ nav {
 }
 
 .contact-form-container {
-    background-color: var(--light-gray);
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 2.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -947,7 +975,8 @@ nav {
 }
 
 .contact-info-card {
-    background-color: var(--light-gray);
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -1051,7 +1080,8 @@ nav {
 }
 
 .location-card {
-    background-color: white;
+    background: var(--glass-light);
+    border: 1px solid var(--glass-border-light);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-soft);
@@ -1091,13 +1121,16 @@ nav {
 
 .faq-item {
     margin-bottom: 1.5rem;
-    border: 1px solid #eee;
+    border: 1px solid var(--glass-border-light);
     border-radius: var(--border-radius);
     overflow: hidden;
+    background: var(--glass-light);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .faq-question {
-    background-color: var(--light-gray);
+    background: rgba(255, 255, 255, 0.62);
     padding: 1.5rem;
     cursor: pointer;
     display: flex;
@@ -1119,7 +1152,7 @@ nav {
 .faq-answer {
     display: none;
     padding: 1.5rem;
-    background-color: white;
+    background: rgba(255, 255, 255, 0.78);
 }
 
 .faq-answer p {

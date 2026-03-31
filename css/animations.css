@@ -1,34 +1,54 @@
-/* Animation classes */
-.fade-in {
+/* Scroll reveal base states */
+.fade-in,
+.slide-up,
+.slide-left,
+.slide-right,
+.zoom-in {
     opacity: 0;
-    animation: fadeIn 1s ease forwards;
+    will-change: transform, opacity;
 }
 
 .slide-up {
-    opacity: 0;
-    transform: translateY(50px);
-    animation: slideUp 0.8s ease forwards;
+    transform: translate3d(0, 32px, 0);
 }
 
 .slide-left {
-    opacity: 0;
-    transform: translateX(50px);
-    animation: slideLeft 0.8s ease forwards;
+    transform: translate3d(32px, 0, 0);
 }
 
 .slide-right {
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: slideRight 0.8s ease forwards;
+    transform: translate3d(-32px, 0, 0);
 }
 
 .zoom-in {
-    opacity: 0;
-    transform: scale(0.9);
-    animation: zoomIn 0.8s ease forwards;
+    transform: scale(0.95);
 }
 
-/* Keyframes */
+.fade-in.animate {
+    animation: fadeIn 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+    animation-delay: var(--stagger-delay, 0ms);
+}
+
+.slide-up.animate {
+    animation: slideUp 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+    animation-delay: var(--stagger-delay, 0ms);
+}
+
+.slide-left.animate {
+    animation: slideLeft 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+    animation-delay: var(--stagger-delay, 0ms);
+}
+
+.slide-right.animate {
+    animation: slideRight 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+    animation-delay: var(--stagger-delay, 0ms);
+}
+
+.zoom-in.animate {
+    animation: zoomIn 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+    animation-delay: var(--stagger-delay, 0ms);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -41,40 +61,40 @@
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translate3d(0, 32px, 0);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes slideLeft {
     from {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translate3d(32px, 0, 0);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes slideRight {
     from {
         opacity: 0;
-        transform: translateX(-50px);
+        transform: translate3d(-32px, 0, 0);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes zoomIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
@@ -82,7 +102,6 @@
     }
 }
 
-/* Animations for interactive elements */
 .btn {
     position: relative;
     overflow: hidden;
@@ -103,7 +122,7 @@
 }
 
 .btn:hover::after {
-    animation: ripple 1s ease-out;
+    animation: ripple 1s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 @keyframes ripple {
@@ -112,134 +131,63 @@
         opacity: 0.5;
     }
     20% {
-        transform: scale(25, 25);
+        transform: scale(24, 24);
         opacity: 0.3;
     }
     100% {
         opacity: 0;
-        transform: scale(40, 40);
+        transform: scale(38, 38);
     }
 }
 
-/* Nav link hover animation */
-.nav-links li a::before {
+/* Ambient hero drift */
+#hero {
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary-color);
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
+    inset: -20% -10%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(157, 181, 232, 0.2), transparent 35%),
+        radial-gradient(circle at 80% 35%, rgba(224, 160, 75, 0.14), transparent 35%),
+        radial-gradient(circle at 60% 80%, rgba(113, 150, 221, 0.18), transparent 38%);
+    pointer-events: none;
+    animation: heroDrift 18s ease-in-out infinite alternate;
 }
 
-.nav-links li a:hover::before {
-    visibility: visible;
-    width: 100%;
+#hero .container {
+    position: relative;
+    z-index: 1;
 }
 
-/* Image hover effect */
-.about-image img, 
-.name-image img,
-.program-image img,
-.service-card img {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+@keyframes heroDrift {
+    from {
+        transform: translate3d(-1%, 0, 0) scale(1);
+    }
+    to {
+        transform: translate3d(1%, -1.5%, 0) scale(1.04);
+    }
 }
 
-.about-image:hover img, 
-.name-image:hover img,
-.program-image:hover img {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Card hover animations */
-.highlight-card,
-.service-card,
-.pillar-card,
-.mission-card,
-.vision-card,
-.location-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.highlight-card:hover,
-.service-card:hover,
-.pillar-card:hover,
-.mission-card:hover,
-.vision-card:hover,
-.location-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Form input focus animation */
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    transform: translateY(-2px);
-}
-
-/* Header scroll animation */
-#header {
-    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* FAQ toggle animation */
-.toggle-icon {
-    transition: transform 0.3s ease;
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 500px;
-}
-
-/* Scroll-triggered animations */
-.scroll-fade-in {
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-.scroll-fade-in.visible {
-    opacity: 1;
-}
-
-.scroll-slide-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.scroll-slide-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Social links hover animation */
 .social-links a {
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.45s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)), background-color 0.3s ease;
 }
 
 .social-links a:hover {
-    transform: translateY(-5px) rotate(360deg);
+    transform: translateY(-4px) rotate(360deg);
 }
 
 .social-links2 a {
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.35s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)), background-color 0.3s ease;
 }
 
 .social-links2 a:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
-/* Footer link animation */
 .link-group ul li a {
     position: relative;
     transition: padding-left 0.3s ease, color 0.3s ease;
@@ -265,107 +213,74 @@
     left: -15px;
 }
 
-/* Animation delays for staggered effects */
-.delay-1 {
-    animation-delay: 0.2s;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    transform: translateY(-2px);
 }
 
-.delay-2 {
-    animation-delay: 0.4s;
+#header {
+    transition:
+        padding 0.35s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)),
+        background-color 0.35s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)),
+        box-shadow 0.35s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-.delay-3 {
-    animation-delay: 0.6s;
+.toggle-icon {
+    transition: transform 0.3s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-.delay-4 {
-    animation-delay: 0.8s;
-}
-
-/* Animations for specific elements */
-.hero-content h1 {
-    animation: slideUp 1s ease forwards;
-}
-
-.hero-content p {
-    animation: slideUp 1s ease 0.2s forwards;
+.scroll-fade-in {
     opacity: 0;
+    transition: opacity 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-.hero-content .cta-buttons {
-    animation: slideUp 1s ease 0.4s forwards;
+.scroll-fade-in.visible {
+    opacity: 1;
+}
+
+.scroll-slide-up {
     opacity: 0;
+    transform: translateY(32px);
+    transition:
+        opacity 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)),
+        transform 0.8s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-/* Logo animation */
-.logo h1 {
-    position: relative;
-    transition: transform 0.3s ease;
+.scroll-slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.logo h1::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-.logo:hover h1 {
-    transform: translateY(-3px);
-}
-
-.logo:hover h1::after {
-    width: 100%;
-}
-
-/* Mobile menu animation */
 @media screen and (max-width: 768px) {
     .hamburger span {
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    
+
     .nav-links {
-        transition: left 0.3s ease;
+        transition: left 0.35s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
     }
-    
+
     .nav-links li {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
     }
-    
+
     .nav-links.active li {
-        animation: navItemSlide 0.5s ease forwards;
+        animation: navItemSlide 0.45s var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
     }
-    
-    .nav-links.active li:nth-child(1) {
-        animation-delay: 0.1s;
-    }
-    
-    .nav-links.active li:nth-child(2) {
-        animation-delay: 0.2s;
-    }
-    
-    .nav-links.active li:nth-child(3) {
-        animation-delay: 0.3s;
-    }
-    
-    .nav-links.active li:nth-child(4) {
-        animation-delay: 0.4s;
-    }
-    
-    .nav-links.active li:nth-child(5) {
-        animation-delay: 0.5s;
-    }
+
+    .nav-links.active li:nth-child(1) { animation-delay: 0.08s; }
+    .nav-links.active li:nth-child(2) { animation-delay: 0.16s; }
+    .nav-links.active li:nth-child(3) { animation-delay: 0.24s; }
+    .nav-links.active li:nth-child(4) { animation-delay: 0.32s; }
+    .nav-links.active li:nth-child(5) { animation-delay: 0.4s; }
 }
 
 @keyframes navItemSlide {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
@@ -378,21 +293,20 @@
     .slide-up,
     .slide-left,
     .slide-right,
-    .zoom-in {
+    .zoom-in,
+    .fade-in.animate,
+    .slide-up.animate,
+    .slide-left.animate,
+    .slide-right.animate,
+    .zoom-in.animate {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
     }
 
-    .hero-content h1,
-    .hero-content p,
-    .hero-content .cta-buttons {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    .btn:hover::after {
+    .btn:hover::after,
+    .nav-links.active li,
+    #hero::after {
         animation: none !important;
     }
 
@@ -403,57 +317,12 @@
         transform: none !important;
     }
 
-    .scroll-fade-in.visible,
-    .scroll-slide-up.visible {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    .highlight-card:hover,
-    .service-card:hover,
-    .pillar-card:hover,
-    .mission-card:hover,
-    .vision-card:hover,
-    .location-card:hover {
-        transform: none !important;
-    }
-
-    .about-image:hover img,
-    .name-image:hover img,
-    .program-image:hover img {
-        transform: none !important;
-    }
-
-    .social-links a:hover {
-        transform: none !important;
-    }
-
-    .social-links2 a:hover {
-        transform: none !important;
-    }
-
-    .logo:hover h1 {
-        transform: none !important;
-    }
-
-    .faq-answer {
-        transition: none !important;
-    }
-
-    .nav-links.active li {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    .nav-links li {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
+    .social-links a:hover,
+    .social-links2 a:hover,
     .form-group input:focus,
     .form-group select:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .link-group ul li a:hover {
         transform: none !important;
     }
 }
