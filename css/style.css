@@ -107,19 +107,27 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
+  min-height: 2.15rem;
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
+.brand span {
+  line-height: 1;
+}
+
 .brand-logo {
+  display: block;
+  flex-shrink: 0;
   width: 2.15rem;
   height: 2.15rem;
-  border-radius: 0.56rem;
-  object-fit: cover;
-  border: 1px solid rgba(146, 175, 228, 0.38);
-  box-shadow: 0 10px 24px rgba(47, 109, 255, 0.25);
+  object-fit: contain;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  filter: brightness(0) invert(1);
 }
 
 .menu-toggle {
