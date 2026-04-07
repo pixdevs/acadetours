@@ -1,31 +1,23 @@
-# Acadetours Global Website
+# AcadetoursGlobal – Static Website
 
-Static website for Acadetours Global, rebuilt as a dark-theme product experience focused on AI-driven talent infrastructure and ICE (Institutional Catalytic Engine).
+🔗 **Live Site**: [acadetours.com](https://acadetours.com)  
+📂 **Repository**: [pixdevs/acadetours](https://github.com/pixdevs/acadetours)
 
-## Stack
+This is the static website for **Acadetours Global**, a company focused on creating transformative educational experiences that bridge the gap between academics and industry practices.
 
-- HTML
-- CSS
-- Vanilla JavaScript
-- GitHub Pages hosting
 
-## Workspace Structure
+## 🛠️ Tech Stack
 
-- `index.html` - Home
-- `about.html` - About + Contact
-- `ice.html` - ICE + Solutions
-- `css/style.css` - Core design system and layout
-- `css/animations.css` - Motion and reveal styles
-- `js/main.js` - Navigation and form behaviors
-- `js/animations.js` - Scroll-based reveal logic
-- `assets/images/credits.md` - Stock image source references
+- **HTML5 | CSS3 | Vanilla JavaScript (ES6)**
+- **Vite** (optional) – `npm run dev` serves the root HTML pages for local preview
+- **GitHub Pages** – For seamless hosting and deployment
 
-## Local Preview
+The site is **static HTML** at the repo root (`index.html`, `about.html`, etc.) with shared assets under `css/`, `js/`, and `images/`. Unused default Vite starter files were removed; there is no bundled SPA entry.
 
-Open `index.html` directly in a browser, or run any static file server from the repository root.
+## 🚀 About AcadetoursGlobal
 
-## Notes
+**Acadetours Global** collaborates with leading industries and trusted vendors to deliver programs that combine practical exposure with academic knowledge. Their mission is to prepare students for successful careers and global opportunities by offering:
 
-- No Node dependencies or build step are required.
-- Legacy pages and scripts were removed as part of the full rebuild.
-- Custom domain setup is preserved via `CNAME`.
+- Hands-on, industry-aligned learning programs  
+- Access to top-tier talent with no upfront recruitment cost  
+- Strong networks across India’s premier institutions 
